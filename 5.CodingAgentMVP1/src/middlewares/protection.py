@@ -7,9 +7,10 @@ from langchain.tools.tool_node import ToolCallRequest
 from langchain.messages import ToolMessage 
 from langgraph.types import Command
 
-from config import get_work_dir
+from tools.shell import deny_command
+from config.config import get_work_dir
 
-from tools.paths import is_blocked_path
+from tools.paths import is_blocked_path, resolve_work_path
 
 _FILE_TOOLS = {"read_file", "write_file", "edit_file", "list_files"}
 
@@ -33,6 +34,8 @@ def deny_reason(tool_name: str, arguments: dict[str, Any]) -> str | None:
     Return a denial message or None if the call may proceed.
 
     """
+    if tool_name == "run_command":
+        return deny_command(arguments.get("command", ""))
     if tool_name not in _FILE_TOOLS:
         return None 
 

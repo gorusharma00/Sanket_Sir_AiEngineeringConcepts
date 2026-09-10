@@ -40,6 +40,3 @@ def list_files(path: str = ".") -> str:
 
 
     return json.dumps(result)
-
-list_files()
-    

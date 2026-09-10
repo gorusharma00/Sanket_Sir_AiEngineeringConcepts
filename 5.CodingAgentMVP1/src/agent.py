@@ -4,7 +4,7 @@ from langchain.agents.structured_output import ProviderStrategy
 from langgraph.checkpoint.memory import InMemorySaver
 
 from config.config import MAX_MODEL_CALLS_PER_RUN, hitl_enabled
-from middlewares import AuditMiddleware, ProtectionMiddleware, HITLMiddleware
+from middlewares import AuditMiddleware, ProtectionMiddleware, build_hitl_middleware
 from models import build_chat_model
 from memory import make_checkpointer
 from tools import ALL_TOOLS
@@ -34,7 +34,7 @@ def build_middleware(
     ]
 
     if enable_hitl:
-        layers.append(HITLMiddleware())
+        layers.append(build_hitl_middleware())
 
     return layers
 
