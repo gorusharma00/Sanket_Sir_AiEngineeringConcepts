@@ -11,7 +11,7 @@ from prompts import build_system_prompt
 from schemas import TurnSummary
 from tools import ALL_TOOLS
 
-def build_middleware() -> list:
+def build_middleware(enable_hitl: bool) -> list:
     """
     Harness layers, outermost first.
 
@@ -50,5 +50,5 @@ def build_agent(
         middleware=build_middleware(enable_hitl=use_hitl),
         response_format=ProviderStrategy(TurnSummary),
         checkpointer=checkpointer or make_checkpointer(),
-        name="Coding Agent",
+        name="Coding-Agent",
     )
