@@ -16,7 +16,7 @@ MAX_MODEL_CALLS_PER_RUN = int(os.getenv("MAX_MODEL_CALLS_PER_RUN", "10"))
 MAX_READ_BYTES = int(os.getenv("MAX_READ_BYTES", "1000000"))
 
 def hitl_enabled() -> bool:
-    return os.getenv("HTIL_ENABLED", "true").lower() in {"1", "true", "yes"}
+    return os.getenv("HITL_ENABLED", "true").lower() in {"1", "true", "yes"}
 
 def get_work_dir() -> Path:
     override = os.getenv("WORK_DIR", "").strip()
