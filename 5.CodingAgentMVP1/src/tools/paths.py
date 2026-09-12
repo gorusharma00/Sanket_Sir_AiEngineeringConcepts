@@ -6,7 +6,7 @@ from config.config import get_work_dir
 
 BLOCKED_PATH_PATTERNS = [
     ".env",
-    ".env.*",
+    ".env.*"
     ".pem",
     ".key",
     ".secret",

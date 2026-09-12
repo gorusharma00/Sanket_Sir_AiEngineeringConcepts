@@ -14,6 +14,6 @@ class TurnSummary(BaseModel):
         default_factory=list
     )
 
-    status: Literal["ok","needs_input", "failed"] = Field(
+    status: Literal("ok","needs_input", "failed") = Field(
         description="ok if the request is done, needs_input if you must ask the user, failed if the request failed"
     )
